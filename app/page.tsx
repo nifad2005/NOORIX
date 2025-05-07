@@ -6,7 +6,7 @@ export default function Home() {
       
       <div>
         <h1 className="font-bold text-slate-800">NOORIX</h1>
-        <p className="text-lg font-serif text-slate-500">Where Noor mees Logic.</p>
+        <p className="text-lg font-serif text-slate-500">Where Noor meets Logic.</p>
       </div>
 
     </main>
