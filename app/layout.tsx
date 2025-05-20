@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import AuthProvider from "@/components/provider/AuthProvider";
+import Navbar from "@/components/utils/Navbar";
 
 
 
@@ -20,8 +22,11 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={` antialiased`}
-      >
-        {children}
+      > 
+        <AuthProvider>
+          <Navbar/>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
