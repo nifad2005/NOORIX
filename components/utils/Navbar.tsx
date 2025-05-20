@@ -25,6 +25,10 @@ export default function Navbar() {
          <li>
           <Link href="/products" className="text-gray-700 hover:text-blue-600 font-medium transition">Products</Link>
         </li>
+        <li>
+          <Link href="/gallery" className="text-gray-700 hover:text-blue-600 font-medium transition">Gallery</Link>
+        </li>
+        
        
       </ul>
       {/* User Avatar */}

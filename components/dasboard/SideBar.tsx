@@ -14,6 +14,9 @@ export default function SideBar() {
             <li>
               <Link href="/dashboard" className="text-gray-700 hover:text-blue-600 font-medium">Dashboard Home</Link>
             </li>
+            <li>
+              <Link href="/dashboard/new-galary" className="text-gray-700 hover:text-blue-600 font-medium">Add Galary</Link>
+            </li>
              <li>
               <Link href="/dashboard/new-experiment" className="text-gray-700 hover:text-blue-600 font-medium">Add Experiment</Link>
             </li>
@@ -24,9 +27,9 @@ export default function SideBar() {
 
           </ul>
         </nav>
-        <div className="mt-8">
+        <div className="mb-32">
           <button onClick={()=>signOut()} className="w-full py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Logout</button>
-    </div>
+        </div>
     </>
   )
 }
