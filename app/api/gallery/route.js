@@ -8,7 +8,10 @@ export const POST = async(req)=>{
         console.log(reqData)
         const client = await clientPromise
         const db = client.db("NOORIX")
-        const data = await db.collection("galary").insertOne(reqData)
+        const data = await db.collection("gallery").insertOne({
+            ...reqData,
+            createdAt : new Date()
+        })
         return NextResponse.json(data,{status:200})
     }catch(err){
         console.log("Error ->Add Galary", err)
@@ -20,7 +23,7 @@ export const GET = async()=>{
     try{
         const client = await clientPromise
         const db = client.db("NOORIX")
-        const data = await db.collection("galary").find({}).toArray()
+        const data = await db.collection("gallery").find({}).sort({createdAt:-1}).limit(10).toArray()
         return NextResponse.json(data,{status:200})
     }catch(err){
         console.log("Error ->Add Galary", err)

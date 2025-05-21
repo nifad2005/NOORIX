@@ -9,9 +9,9 @@ export default function Home() {
       transition-all
       duration-300]
       ">
-      <div>
+      <div className="flex flex-col  gap-1">
         <h1 className="font-bold text-slate-800">NOORIX</h1>
-        <p className="text-lg font-serif text-slate-500">Where Noor meets Logic.</p>
+        <p className="text-[18px] font-serif text-slate-500 max-w-xl">An experimental tech startup where X&I (Experimentation & Innovation) is the foundation of every build.</p>
       </div>
       <CarouselComponent />
       </div>

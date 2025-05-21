@@ -26,7 +26,9 @@ export default function GalleryCard({gallery}:{gallery:any}) {
             imageIsOpen?(<div className='w-full z-20   h-full fixed top-0 left-0 cursor-zoom-out' onClick={()=>setImageIsOpen(false)}>
                 <div className='w-full h-full bg-slate-800 opacity-50 absolute'/>
                 <div className='p-44 pt-20 shadow-2xl shadow-green-300 h-screen rounded-lg  overflow-hidden flex items-center justify-center z-10 relative'>
-                <Image className='w-auto h-auto shadow-2xl' src={gallery.image} alt={gallery.title} width={500} height={500}/>
+                <Image
+                loading='lazy'  
+                className='w-auto h-auto shadow-2xl' src={gallery.image} alt={gallery.title} width={100} height={100}/>
                 </div>
             </div>):null
         }

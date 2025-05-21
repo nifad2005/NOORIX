@@ -1,7 +1,30 @@
-import React from 'react'
+'use client'
+import ExperimentCard from '@/components/experiments/ExperimentCard'
+import Loading from '@/components/utils/Loading'
+import React, { useEffect, useState } from 'react'
 
 export default function Experiments() {
+  const [experimentData, setExperimentData] = useState([])
+  const [loading, setLoading] = useState(false)
+  useEffect(() => {
+    setLoading(true)
+    const fetchExperimentData = async () => {
+      const response = await fetch('/api/experiments')
+      const data = await response.json()
+      setExperimentData(data)
+      console.log("-Experminets : ",data) 
+      setLoading(false)
+    }
+    fetchExperimentData()
+  }, [])
+  if(loading)return <Loading/>
   return (
-    <div>Experiments</div>
+    <div className='min-h-screen xl:w-[70%] mx-auto flex flex-col gap-4 py-8'>
+      {
+        experimentData.map((data: any) => (
+         <ExperimentCard key={data._id} {...data} />
+        ))
+      }
+    </div>
   )
 }

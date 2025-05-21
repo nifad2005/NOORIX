@@ -2,6 +2,7 @@
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import React, { useState } from "react";
+import imageCompression from "browser-image-compression";
 
 export default function Galary() {
   // Hooks
@@ -15,21 +16,28 @@ export default function Galary() {
   // Handle Form Change
 
   //Handle Data change
-  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFormChange = async(e: React.ChangeEvent<HTMLInputElement>) => {
     setStatus("");
     if (e.target.name == "image") {
       const file = e.target.files?.[0];
       if (file) {
-          setImageFile(file);
-          const reader = new FileReader();
-          reader.readAsDataURL(file);
+        const options = {
+          maxSizeMB: 1,
+          maxWidthOrHeight: 1920,
+          useWebWorker: true,
+        };
+        const smallImage = await imageCompression(file, options);
+        setImageFile(smallImage);
+        const reader = new FileReader();
+        reader.readAsDataURL(smallImage);
         reader.onloadend = () => {
           setPreview(reader.result as string);
+          console.log(reader.result);
           setFormData({
             ...formData,
             [e.target.name]: reader.result,
-          })
-          return
+          });
+          return;
         };
       }
     }
@@ -53,7 +61,7 @@ export default function Galary() {
       setStatus("Uploading to gallery...🔃");
 
       // Create form data
-      
+
       console.log("From data - post", formData);
       const response = await fetch("/api/gallery", {
         method: "POST",
