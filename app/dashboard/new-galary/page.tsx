@@ -22,7 +22,7 @@ export default function Galary() {
       const file = e.target.files?.[0];
       if (file) {
         const options = {
-          maxSizeMB: 1,
+          maxSizeMB: 0.06,
           maxWidthOrHeight: 1920,
           useWebWorker: true,
         };
