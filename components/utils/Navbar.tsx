@@ -23,6 +23,8 @@ export default function Navbar() {
             },
             body: JSON.stringify({
               email: session.user?.email,
+              name: session.user?.name,
+              image: session.user?.image,
             }),
           });
           const { user } = await response.json();
