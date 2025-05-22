@@ -2,11 +2,36 @@
 import { signOut } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import React from "react";
 import { useSelector } from "react-redux";
 
+
 export default function SideBar() {
   const user = useSelector((state: any) => state.user);
+  if(!user)redirect('/login')
+  const barItems = [
+    {
+      name: "Dashboard",
+      path: "/dashboard",
+    },
+    {
+      name: "New Gallery",
+      path: "/dashboard/galary",
+    },
+    {
+      name: "New Product",
+      path: "/dashboard/new-product",
+    },
+    {
+      name: "New Experiment",
+      path: "/dashboard/new-experiment",
+    },
+    {
+      name: "Control Panel",
+      path: "/dashboard/panel",
+    },
+  ]
   return (
     <>
       <div className="mb-8 w">
@@ -31,51 +56,23 @@ export default function SideBar() {
       </div>
       <nav className="flex-1">
         <ul className="space-y-4">
-          <li>
-            <Link
-              href="/dashboard"
-              className="text-gray-700 hover:text-blue-600 font-medium"
-            >
-              Dashboard Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/dashboard/galary"
-              className="text-gray-700 hover:text-blue-600 font-medium"
-            >
-              Add Galary
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/dashboard/new-experiment"
-              className="text-gray-700 hover:text-blue-600 font-medium"
-            >
-              Add Experiment
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/dashboard/new-product"
-              className="text-gray-700 hover:text-blue-600 font-medium"
-            >
-              Add Product
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/dashboard/panel"
-              className="text-gray-700 hover:text-blue-600 font-medium"
-            >
-              Control Panel
-            </Link>
-          </li>
+          {
+            barItems.map((item, index) => (<>
+              <li>
+              <Link
+                href={item.path}
+                className="text-gray-700 hover:text-blue-600 font-medium"
+              >
+                {item.name}
+              </Link>
+            </li>
+            </>))
+          }
         </ul>
       </nav>
       <div className="mb-32">
         <button
-          onClick={() => signOut()}
+          onClick={() => signOut({ callbackUrl: "/" })}
           className="w-full py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
         >
           Logout

@@ -3,6 +3,7 @@ import "./globals.css";
 import AuthProvider from "@/components/provider/AuthProvider";
 import Navbar from "@/components/utils/Navbar";
 import ReduxProvider from "@/components/provider/Redux";
+import Footer from "@/components/utils/Footer";
 
 
 
@@ -28,6 +29,7 @@ export default function RootLayout({
           <ReduxProvider>
             <Navbar/>
             {children}
+            <Footer/>
           </ReduxProvider>
         </AuthProvider>
       </body>

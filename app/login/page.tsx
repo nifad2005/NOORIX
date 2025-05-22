@@ -5,9 +5,7 @@ import React from "react";
 
 export default function Page() {
   const { data: session } = useSession();
-   if(session) setTimeout(() => {
-        redirect("/dashboard");
-    }, 600);
+  if(session)redirect("/dashboard")
     
   if (session)
     return (

@@ -15,7 +15,7 @@ export default function Navbar() {
     const setUp = async () => {
       if (session?.user) {
         if (shouldFetch) {
-          console.log("sending data : ", session.user);
+        
           const response = await fetch("/api/users", {
             method: "POST",
             headers: {
@@ -28,7 +28,8 @@ export default function Navbar() {
             }),
           });
           const { user } = await response.json();
-          console.log(user)
+          
+
           dispatch(login(user));
           setShouldFetch(false);
         }

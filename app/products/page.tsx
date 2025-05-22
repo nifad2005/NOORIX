@@ -25,7 +25,9 @@ function Page() {
         }
         fetchProducts()
     },[])
-    if(loading)  return<Loading/>   
+    if(loading)  return <div className='min-h-screen '>
+    <Loading/>   
+    </div>
   
    return (
   <div className="max-w-3xl mx-auto py-10 space-y-8">

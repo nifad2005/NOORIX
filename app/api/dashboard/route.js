@@ -16,7 +16,7 @@ export const GET = async()=>{
             gallery: await db.collection("gallery").find({}).toArray().then(res=>res.length),
             masters :1,
             admins : await db.collection("extrainfo").find({role:"Admin"}).toArray().then(res=>res.length),
-            users : await db.collection("extrainfo").find({role:"User"}).toArray().then(res=>res.length)
+            users : await db.collection("extrainfo").find().toArray().then(res=>res.length)
         }
         return NextResponse.json({data},{status:200})
     }catch(err){

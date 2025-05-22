@@ -11,7 +11,7 @@ export default function Page() {
   const [dashboardData, setDashboardData] = useState<any>({
     products: 0,
     experiments: 0,
-    galary: 0,
+    gallery: 0,
     masters: 0,
     admins: 0,
     users: 0,
@@ -80,7 +80,7 @@ export default function Page() {
         </section>
         {/* Users List  */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white w-fit rounded-lg shadow p-6 flex flex-col gap-2">
+          <div className="bg-white w-[400px] rounded-lg shadow p-6 flex flex-col gap-2">
             <div className="text-2xl font-semibold text-gray-800 text-center">
               Activity
             </div>
@@ -100,7 +100,7 @@ export default function Page() {
                 </span>
               </div>
               <div>
-                <h2 className="text-xl font-medium mb-2">Experminets </h2>
+                <h2 className="text-xl font-medium mb-2">Gallery </h2>
                 <p className="text-2xl font-bold text-blue-600">--</p>
 
                 <span className="text-gray-900 font-medium text-xl  ">

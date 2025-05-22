@@ -19,7 +19,8 @@ export default function Experiments() {
   }, [])
   if(loading)return <Loading/>
   return (
-    <div className='min-h-screen xl:w-[70%] mx-auto flex flex-col gap-4 py-8'>
+    <div className='  mx-auto flex flex-wrap gap-4 py-8'>
+      
       {
         experimentData.map((data: any) => (
          <ExperimentCard key={data._id} {...data} />
