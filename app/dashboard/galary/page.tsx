@@ -1,12 +1,13 @@
 "use client";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import imageCompression from "browser-image-compression";
+import { useSelector } from "react-redux";
 
 export default function Galary() {
   // Hooks
-  const { data: session } = useSession();
+  const user = useSelector((state: any) => state.user);
   const [loading, setLoading] = useState<boolean>(false);
   const [formData, setFormData] = useState<any>({});
   const [status, setStatus] = useState("");
@@ -14,7 +15,6 @@ export default function Galary() {
   const [preview, setPreview] = useState<string>("");
 
   // Handle Form Change
-
   //Handle Data change
   const handleFormChange = async(e: React.ChangeEvent<HTMLInputElement>) => {
     setStatus("");
@@ -46,7 +46,7 @@ export default function Galary() {
       [e.target.name]: e.target.value,
     });
   };
-
+  console.log("User -galary", user.role !== "master");
   // Handle Submit
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -67,9 +67,9 @@ export default function Galary() {
         method: "POST",
         body: JSON.stringify({
           ...formData,
-          userImage: session?.user?.image,
-          userName: session?.user?.name,
-          userEmail: session?.user?.email,
+          userImage: user?.image,
+          userName: user?.name,
+          userEmail: user?.email,
         }),
       });
 
@@ -87,14 +87,12 @@ export default function Galary() {
       setLoading(false);
     }
   };
-
-  if (session?.user?.email !== "nifaduzzaman2005@gmail.com")
+  if (user.role !== "Master" && user.role !== "Admin")
     return (
       <div className="flex justify-center items-center h-screen">
         You are not authorized to view this page.
       </div>
     );
-
   return (
     <div className="max-w-xl mx-auto mt-16 bg-white rounded-lg shadow p-8">
       <h1 className="text-2xl font-bold mb-6 text-blue-700">

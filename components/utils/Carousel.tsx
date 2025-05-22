@@ -20,7 +20,7 @@ function CarouselComponent() {
       >
         <CarouselContent className="-mt-1 ">
           {
-            Array(7).fill(1).map(()=> <CarouselItem className="pt-1 flex justify-center" >
+            Array(7).fill(1).map(()=> <CarouselItem key={Math.random()} className="pt-1 flex justify-center" >
             <div className="rounded-2xl overflow-hidden  ">
               <Image className="h-auto w-auto" src={'/images/logo.png'} alt="image" height={350} width={350}/>
             </div>

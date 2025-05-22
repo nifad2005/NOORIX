@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import AuthProvider from "@/components/provider/AuthProvider";
 import Navbar from "@/components/utils/Navbar";
+import ReduxProvider from "@/components/provider/Redux";
 
 
 
@@ -24,8 +25,10 @@ export default function RootLayout({
         className={` antialiased`}
       > 
         <AuthProvider>
-          <Navbar/>
-          {children}
+          <ReduxProvider>
+            <Navbar/>
+            {children}
+          </ReduxProvider>
         </AuthProvider>
       </body>
     </html>

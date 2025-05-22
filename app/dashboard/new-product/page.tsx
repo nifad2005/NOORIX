@@ -1,12 +1,15 @@
 "use client";
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function Page() {
         // Hooks
 
   // Data Will Be Used.
   const { data: session } = useSession();
+  const user = useSelector((state: any) => state.user);
+
   const [categories, setCategories] = useState<any>([])
   const [status, setStatus] = useState({message:"",type:""})
   // Add Prodcut Logic States
@@ -15,6 +18,7 @@ export default function Page() {
   // New Category Logic States 
   const [addCategory,setAddCategory] = useState<boolean>(false)
   const [categoryText,setCategoryText] = useState("")
+  
   
   // Status
   
@@ -73,7 +77,7 @@ export default function Page() {
   }
 
 
-  if (session?.user?.email !== "nifaduzzaman2005@gmail.com")
+  if (user.role !== "Master" && user.role !== "Admin")
     return (
       <div className="flex justify-center items-center h-screen">
         You are not authorized to view this page.

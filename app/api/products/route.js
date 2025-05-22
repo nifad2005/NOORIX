@@ -18,6 +18,7 @@ export const POST = async(req)=>{
     
 }
 
+
 export const GET = async()=>{
     try{
         const client = await clientPromise
