@@ -1,10 +1,9 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */ // This JSDoc provides type checking without TypeScript syntax
+const nextConfig = {
   /* config options here */
-  images:{
-    domains:["lh3.googleusercontent.com"]
+  images: {
+    domains: ["lh3.googleusercontent.com"]
   }
 };
 
-export default nextConfig;
+module.exports = nextConfig;
