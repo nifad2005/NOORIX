@@ -12,7 +12,7 @@ export default function Experiments() {
       const response = await fetch('/api/experiments')
       const data = await response.json()
       setExperimentData(data)
-      console.log("-Experminets : ",data) 
+   
       setLoading(false)
     }
     fetchExperimentData()

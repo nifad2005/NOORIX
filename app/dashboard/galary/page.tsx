@@ -32,7 +32,6 @@ export default function Galary() {
         reader.readAsDataURL(smallImage);
         reader.onloadend = () => {
           setPreview(reader.result as string);
-          console.log(reader.result);
           setFormData({
             ...formData,
             [e.target.name]: reader.result,
@@ -46,7 +45,6 @@ export default function Galary() {
       [e.target.name]: e.target.value,
     });
   };
-  console.log("User -galary", user.role !== "master");
   // Handle Submit
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -62,7 +60,6 @@ export default function Galary() {
 
       // Create form data
 
-      console.log("From data - post", formData);
       const response = await fetch("/api/gallery", {
         method: "POST",
         body: JSON.stringify({
@@ -81,7 +78,6 @@ export default function Galary() {
         setImageFile(null);
       }
     } catch (err) {
-      console.log("Error -> Add Gallery Item", err);
       setStatus("Error uploading image");
     } finally {
       setLoading(false);

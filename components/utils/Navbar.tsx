@@ -3,36 +3,33 @@ import { login, logout } from "@/lib/redux/slices/userSlice";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function Navbar() {
   const { data: session } = useSession();
-
+  const [shouldFetch, setShouldFetch] = useState(true);
   const dispatch = useDispatch();
   const user = useSelector((state: any) => state.user);
   useEffect(() => {
     const setUp = async () => {
-      console.log("Session changed. New session : -navbar ", session);
       if (session?.user) {
-        console.log("Tring to set user in extrainfo --navbar ", session.user);
-        const response = await fetch("/api/users", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: session.user?.email,
-            name: session.user?.name,
-            image: session.user?.image,
-          }),
-        });
-        const {user} = await response.json();
-        console.log("REs Data -nav",user)
-        dispatch(
-          login(user)
-        );
-        console.log("Redux User set. -navbar ");
+        if (shouldFetch) {
+          console.log("sending data : ", session.user);
+          const response = await fetch("/api/users", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: session.user?.email,
+            }),
+          });
+          const { user } = await response.json();
+          console.log(user)
+          dispatch(login(user));
+          setShouldFetch(false);
+        }
       } else {
         dispatch(logout({}));
       }

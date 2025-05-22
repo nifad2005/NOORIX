@@ -26,7 +26,7 @@ function Page() {
         fetchProducts()
     },[])
     if(loading)  return<Loading/>   
-        console.log(products)
+  
    return (
   <div className="max-w-3xl mx-auto py-10 space-y-8">
     {

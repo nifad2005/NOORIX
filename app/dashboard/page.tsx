@@ -1,4 +1,5 @@
 "use client";
+import Loading from "@/components/utils/Loading";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -6,18 +7,30 @@ import { useSelector } from "react-redux";
 
 export default function Page() {
   const user = useSelector((state: any) => state.user);
-  const [dashboardData, setDashboardData] = useState<any>([]);
+  
+  const [dashboardData, setDashboardData] = useState<any>({
+    products: 0,
+    experiments: 0,
+    galary: 0,
+    masters: 0,
+    admins: 0,
+    users: 0,
+  });
   const { data: session } = useSession();
+  const [loading, setLoading] = useState(true);
   if (!session) return redirect("/login");
+
+
   useEffect(() => {
     const fetchDashboardData = async () => {
       const response = await fetch("/api/dashboard");
       const data = await response.json();
       setDashboardData(data.data);
+      setLoading(false);
     };
     fetchDashboardData();
   }, []);
-  console.log("Data -dashboard ", dashboardData);
+  
   return (
     <div className="min-h-screen flex bg-gray-100">
       {/* Main Content */}

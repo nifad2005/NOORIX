@@ -31,7 +31,6 @@ export default function Page() {
       setAddCategory(true)
       return
     }
-    console.log(e.target.value)
     e.preventDefault();
     setFromData({
       author: session?.user?.name,

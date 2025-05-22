@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 export default function GalleryCard({gallery}:{gallery:any}) {
     const[imageIsOpen, setImageIsOpen] = useState(false)
 
-    console.log(gallery)
+ 
   return (
   <div className="max-w-3xl mx-auto py-10 space-y-8">
         <div key={gallery._id} className="bg-slate-100 rounded-lg shadow p-6">

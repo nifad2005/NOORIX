@@ -133,7 +133,7 @@ export default function Panel() {
           </div>
         </div>
         {
-          panels?.map((panel : any)=>(<PanelCard {...panel } userRole={user.role} />))
+          panels?.map((panel : any)=>(<PanelCard {...panel } key={panel._id} userRole={user.role} />))
         }
       </div>
     </div>
