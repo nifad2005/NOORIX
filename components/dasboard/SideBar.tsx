@@ -16,6 +16,10 @@ export default function SideBar() {
       path: "/dashboard",
     },
     {
+      name: "Bookmarks",
+      path: "/dashboard/bookmarks",
+    },
+    {
       name: "New Gallery",
       path: "/dashboard/galary",
     },

@@ -4,7 +4,24 @@ import React, { useState } from 'react'
 export default function GalleryCard({gallery}:{gallery:any}) {
     const[imageIsOpen, setImageIsOpen] = useState(false)
 
+  const handleBookmark = async () => {
+    const response = await fetch('/api/bookmarks', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({...gallery}),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log('Bookmark added:', data);
+    } else {
+      console.error('Failed to add bookmark');
+    }
  
+  }
+  console.log(gallery)
   return (
   <div className="w-3xl mx-auto grid   py-10 space-y-8">
         <div  className="bg-slate-100  rounded-lg h-[600px] shadow p-6">
@@ -24,7 +41,12 @@ export default function GalleryCard({gallery}:{gallery:any}) {
             <Image onClick={()=>setImageIsOpen(!imageIsOpen)} src={gallery.image} alt={gallery.title} width={500} height={500} className='h-full w-auto   brightness-95 hover:brightness-100 duration-200 active:brightness-95 cursor-zoom-in '/>
             </div>
           </div>
+          <button  
+            onClick={handleBookmark}
+          className="px-4 py-2 bg-blue-500 text-xl rounded-2xl hover:bg-blue-600 active:bg-blue-700">Bookmark</button>
           </div>
+
+
         {
             imageIsOpen?(<div className='w-full z-20   h-full fixed top-0 left-0 cursor-zoom-out' onClick={()=>setImageIsOpen(false)}>
                 <div className='w-full h-full bg-slate-800 opacity-50 absolute'/>
