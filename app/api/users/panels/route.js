@@ -16,7 +16,7 @@ export const POST = async (req)=>{
     const inputData = await req.json()
     console.log("Data -> ",inputData)
     if(inputData.email === "nifaduzzaman2005@gmail.com"){
-        return NextResponse.json({message:"This email is protected to change role."},{status:400})
+        return NextResponse.json({message:"This email is protected to change role.⚠️"},{status:400})
     }
     try{
         const client = await clientPromise

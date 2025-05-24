@@ -1,14 +1,16 @@
 "use client"
 import CarouselComponent from "@/components/utils/Carousel";
 import { login } from "@/lib/redux/slices/userSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Experiments from "./experiments/page";
 import Link from "next/link";
 
 
 export default function Home() {
-  const dispatch = useDispatch()
+  
   const user = useSelector((state : any)=>state.user)
+  const gallery = useSelector((state:any)=>state.gallery)
+  console.log(gallery.gallery)
 
   return (
 
@@ -33,7 +35,7 @@ export default function Home() {
       <section className="xl:w-[70%] mx-auto mt-32 flex flex-col gap-2">
 
         <h1 className='text-3xl font-bold'>Experiments</h1>
-        <Experiments/>
+        {/* <Experiments/> */}
         <Link href="/experiments" className="text-blue-600 font-semibold text-lg hover:underline">See More</Link>
       </section>
 

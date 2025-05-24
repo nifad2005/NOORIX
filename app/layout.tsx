@@ -4,6 +4,7 @@ import AuthProvider from "@/components/provider/AuthProvider";
 import Navbar from "@/components/utils/Navbar";
 import ReduxProvider from "@/components/provider/Redux";
 import Footer from "@/components/utils/Footer";
+import Chatbot from "@/components/chatbot/Chatbot";
 
 
 
@@ -27,9 +28,13 @@ export default function RootLayout({
       > 
         <AuthProvider>
           <ReduxProvider>
+            <div >
+
             <Navbar/>
-            {children}
+              <Chatbot/>
+              {children}
             <Footer/>
+            </div>
           </ReduxProvider>
         </AuthProvider>
       </body>

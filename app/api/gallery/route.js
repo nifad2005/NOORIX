@@ -19,11 +19,15 @@ export const POST = async(req)=>{
     }
 }
 
-export const GET = async()=>{
+export const GET = async(req)=>{
+    
+    const url = new URL(req.url)
+    const pageNumber = url.searchParams.get("page")
+    console.log("Pagination Number -gallery",pageNumber)
     try{
         const client = await clientPromise
         const db = client.db("NOORIX")
-        const data = await db.collection("gallery").find({}).sort({createdAt:-1}).limit(10).toArray()
+        const data = await db.collection("gallery").find({}).sort({createdAt:-1}).skip(pageNumber*10).limit(10).toArray()
         return NextResponse.json(data,{status:200})
     }catch(err){
         console.log("Error ->Add Galary", err)
