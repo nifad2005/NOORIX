@@ -16,7 +16,7 @@ function HomePage() {
             </a>
           </li>
           <li className="p-2 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition duration-200">
-            <a href="#" onClick={() => alert('Navigating to About Us page!')} className="hover:underline"> {/* Replace with actual navigation */}
+            <a href="https://noorix-hub.vercel.app/about" target="_blank" rel="noopener noreferrer" className="hover:underline"> {/* Replace with actual navigation */}
               About Us
             </a>
           </li>
@@ -38,7 +38,6 @@ function HomePage() {
         {/* About Us Button */}
         <button
           className="bg-blue-600 text-white py-3 px-8 rounded-full text-lg font-medium shadow-lg hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300"
-          onClick={() => alert('Navigating to About Us page!')} // Replace with actual navigation
         >
           About Us
         </button>
@@ -49,7 +48,7 @@ function HomePage() {
         <div className="mb-4 sm:mb-0">NOORIX</div>
         <ul className="flex flex-wrap justify-center sm:justify-end gap-x-6 gap-y-2">
           <li>
-            <a href="#" className="hover:text-blue-600 transition duration-200" onClick={() => alert('Navigating to About Us page!')}> {/* Replace with actual navigation */}
+            <a href="https://noorix-hub.vercel.app/about" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition duration-200" > {/* Replace with actual navigation */}
               About Us
             </a>
           </li>
@@ -59,7 +58,7 @@ function HomePage() {
             </a>
           </li>
           <li>
-            <a href="#" className="hover:text-blue-600 transition duration-200" onClick={() => alert('Navigating to Products page!')}> {/* Replace with actual navigation */}
+            <a href="https://noorix-hub.vercel.app/products" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition duration-200" > {/* Replace with actual navigation */}
               Products
             </a>
           </li>
